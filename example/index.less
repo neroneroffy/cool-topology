@@ -1,0 +1,227 @@
+@import "../src/common/index";
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #e4e4e4;
+}
+.example {
+  padding-bottom: 100px;
+  .tip {
+    width: 180px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -90px;
+    margin-top: -50px;
+    background: #000;
+    opacity: 0.6;
+    color: #fff;
+    transition: all .3s ease-in-out;
+    border-radius: 5px;
+    z-index: 9999;
+  }
+
+  .main {
+    width: 600px;
+    margin: 0 auto;
+    .logo {
+      margin-top: @padding-medium;
+      text-align: center;
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    .operation {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .control {
+      margin: @padding-medium 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .title {
+        width: 25%;
+      }
+      .content {
+        width: 75%;
+      }
+    }
+    .play-detail-operation {
+      display: none;
+    }
+
+    button {
+      padding: 8px;
+      border-radius: 4px;
+      background: #fff;
+      border: none;
+      cursor: pointer;
+      min-width: 60px;
+      text-align: center;
+      outline: none;
+      color: @font-color-3;
+      text-transform: capitalize;
+    }
+    .volume-control-wrapper {
+      padding: 20px 0;
+      width: 20%;
+    }
+    .volume-control {
+      height: 4px;
+      border-radius: 16px;
+      background: #ccc;
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .volume-slider {
+        height: 4px;
+        border-radius: 16px;
+        position: absolute;
+        .volume-dot {
+          height: 10px;
+          width: 10px;
+          position: absolute;
+          right: -6px;
+          top: -3px;
+          background: #fff;
+          border-radius: 50%;
+          box-shadow: 0 0 2px #656565;
+        }
+      }
+    }
+  }
+  .audio-list {
+    width: 600px;
+    margin: 30px auto 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+    &:hover {
+      box-shadow: 0 0 8px #e2e2e2;
+    }
+    .audio-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all .3s ease-in-out;
+      padding: 16px;
+      cursor: pointer;
+      &:hover {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      .left {
+        display: flex;
+        align-items: center;
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 5px;
+        }
+        .audio-info {
+          margin-left: 16px;
+        }
+      }
+      .right {
+        svg {
+          width: 30px;
+          height: 30px;
+          fill: currentColor;
+          color: @font-color-4;
+        }
+      }
+    }
+    .audio-item-active {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+  }
+  .close-play-list {
+    cursor: pointer;
+  }
+}
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 780px) {
+  .example {
+    .main {
+      width: 80%;
+      margin: 0 auto;
+      position: relative;
+    }
+    .audio-list {
+      width: 100%;
+      margin-top: 0;
+      .audio-item {
+        padding: 10px;
+        .left img {
+          width: 40px;
+          height: 40px;
+        }
+        .left .audio-info {
+          font-size: 13px;
+        }
+        .right {
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+    .exp-operation {
+      width: 100%;
+      .control {
+        .title {
+          width: 45%;
+        }
+        .content {
+          width: 60%;
+        }
+      }
+      .play-detail-operation {
+        display: flex;
+      }
+      .volume-control-wrapper {
+        width: 100%;
+        .volume-control, .volume-slider {
+          height: 2px;
+          .volume-dot {
+            top: -4px;
+          }
+        }
+      }
+    }
+    .blur-filter {
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(5px);
+    }
+    .detail-bottom-actions-icon {
+      margin: 0 16px;
+      svg {
+        width: 23px;
+        height: 23px;
+        fill: #bfbfbf;
+      }
+    }
+    .comment-icon {
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
