@@ -9,23 +9,21 @@ const Node: React.FC<coolTopologyTypes.INodeProps> = props => {
     fillColor = primaryColor,
     htmlContent,
   } = props
-  return <foreignObject
+  return htmlContent ? <foreignObject
     width={`${width}`}
     height={`${height}`}
     id={id}
   >
-    {
-      htmlContent ?
-        htmlContent
-        :
-        <circle
-          cx="100"
-          cy="50"
-          r={`${Math.min(width, height) / 2}`}
-          fill={fillColor}
-        />
-    }
+    {htmlContent}
   </foreignObject>
+    :
+    <circle
+      cx="100"
+      cy="50"
+      id={id}
+      r={`${Math.min(width, height) / 2}`}
+      fill={fillColor}
+    />
 }
 
 export default Node

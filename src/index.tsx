@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { coolTopologyTypes } from '../'
-import Node from './components/Nodes'
-import Edges from './components/Edges'
+import Node from './components/Node'
+import Edges from './components/Edge'
 import './index.less'
 
 const CoolTopology: React.FC<coolTopologyTypes.IMainProps> = props => {

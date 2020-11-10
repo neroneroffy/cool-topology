@@ -1,7 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import './index.less'
-import '../dist/index.css'
 import CoolTopology from '../src'
 const logo = require('./assets/logo.png').default
 import classnames from 'classnames'
@@ -43,6 +42,49 @@ const App = () => {
     width: 800,
     height: 1000,
   }
+  const { nodes, edges } = data
+/*
+  
+  const adjoinTable = []
+  const findNodeByEdge = (node, edges) => {
+    const edgeOut = edges.find(edge => edge.source === node.id)
+    if (!edgeOut) {
+      return null
+    }
+    const target = nodes.find(node => node.id === edgeOut.target)
+    return {
+      data: target,
+      next: target ? findNodeByEdge(target, edges) : null
+    }
+  }
+  nodes.forEach(node => {
+    const head = {
+      data: node,
+      next: null
+    }
+    head.next = findNodeByEdge(node, edges)
+    adjoinTable.push(head)
+  })
+  console.log(adjoinTable);
+*/
+  //
+  const adjoinMatrix = []
+  nodes.forEach(nodeY => {
+    const row = []
+    nodes.forEach(nodeX => {
+      const outEdge = edges.find(edge => edge.source === nodeY.id)
+      const inEdge = edges.find(edge => edge.source === nodeX.id)
+      if (outEdge && outEdge.target === nodeX.id) {
+        row.push(1)
+      } else if (inEdge && inEdge.target === nodeY.id) {
+        row.push(1)
+      } else {
+        row.push(null)
+      }
+    })
+    adjoinMatrix.push(row)
+  })
+  console.log(adjoinMatrix);
   return <div className={'example'}>
     <CoolTopology {...data}/>
   </div>
